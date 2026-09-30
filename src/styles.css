@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * Design system — Dra. Diane Marinho
+ * Editorial, científico, atemporal.
+ * Verde profundo, off-white, areia, dourado envelhecido pontual.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-sand: var(--sand);
+  --color-gold: var(--gold);
+  --color-paper: var(--paper);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-card: 0 1px 2px oklch(0.3 0.03 150 / 4%);
+  --shadow-lift: 0 14px 40px -22px oklch(0.3 0.04 150 / 35%);
+}
+
+:root {
+  --radius: 0.375rem;
+
+  /* #F7F5EF */
+  --background: oklch(0.966 0.008 92);
+  /* #2C2C2C */
+  --foreground: oklch(0.303 0 0);
+  /* #FCFBF7 */
+  --card: oklch(0.986 0.005 95);
+  --card-foreground: oklch(0.303 0 0);
+  --popover: oklch(0.986 0.005 95);
+  --popover-foreground: oklch(0.303 0 0);
+  /* #1F4D3A */
+  --primary: oklch(0.379 0.06 158);
+  --primary-foreground: oklch(0.986 0.005 95);
+  /* #153A2C */
+  --primary-deep: oklch(0.305 0.052 159);
+  /* #D8D1C7 */
+  --secondary: oklch(0.86 0.014 84);
+  --secondary-foreground: oklch(0.379 0.06 158);
+  --muted: oklch(0.94 0.008 90);
+  --muted-foreground: oklch(0.52 0.012 90);
+  --accent: oklch(0.92 0.012 88);
+  --accent-foreground: oklch(0.379 0.06 158);
+  --sand: oklch(0.86 0.014 84);
+  /* #B49A68 */
+  --gold: oklch(0.68 0.058 84);
+  --paper: oklch(0.986 0.005 95);
+  --destructive: oklch(0.55 0.18 27);
+  --destructive-foreground: oklch(0.986 0.005 95);
+  /* #E8E8E5 */
+  --border: oklch(0.918 0.003 90);
+  --input: oklch(0.918 0.003 90);
+  --ring: oklch(0.379 0.06 158);
+
+  --sidebar: oklch(0.966 0.008 92);
+  --sidebar-foreground: oklch(0.303 0 0);
+  --sidebar-primary: oklch(0.379 0.06 158);
+  --sidebar-primary-foreground: oklch(0.986 0.005 95);
+  --sidebar-accent: oklch(0.92 0.012 88);
+  --sidebar-accent-foreground: oklch(0.379 0.06 158);
+  --sidebar-border: oklch(0.918 0.003 90);
+  --sidebar-ring: oklch(0.379 0.06 158);
+
+  /* Texturas oficiais de acabamento — aplicadas por tipo de fundo (claro/escuro),
+     nunca por seção específica. Ver .texture-paper (claro) e .texture-dark (escuro). */
+  --texture-light: url("/images/textura_de_papel_marfim_artesanal.png");
+  --texture-dark-img: url("/images/veludo_esmeralda_em_ondas_suaves.png");
+  --texture-light-opacity: 0.42;
+  --texture-dark-opacity: 0.13;
+  --header-texture-opacity: 0.08;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --texture-light-opacity: 0.32;
+    --texture-dark-opacity: 0.1;
+    --header-texture-opacity: 0.06;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Acabamento de textura para fundos CLAROS (off-white, creme, areia clara) —
+   papel marfim artesanal, sutil, atrás de todo o conteúdo. */
+@utility texture-paper {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: var(--texture-light);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 560px;
+    opacity: var(--texture-light-opacity);
+  }
+}
+
+/* Acabamento de textura, ainda mais discreto, para o header claro fixo.
+   Não declara position: relative — o host já é position:fixed, que já serve
+   de containing block para o pseudo-elemento; forçar relative aqui quebraria
+   o comportamento sticky/fixed do header. */
+@utility texture-header {
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: var(--texture-light);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 560px;
+    opacity: var(--header-texture-opacity);
+  }
+}
+
+/* Acabamento de textura para fundos ESCUROS (verde institucional, verde profundo) —
+   veludo esmeralda, sutil, atrás de todo o conteúdo.
+   A foto do veludo tem luz/dobras direcionais (não é um padrão seamless), então
+   NUNCA usar background-repeat aqui — repetir em tile cria emendas verticais
+   visíveis nas bordas. Uma única camada em cover, sem repetição, cobre a seção
+   inteira como uma superfície contínua. */
+@utility texture-dark {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: var(--texture-dark-img);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: var(--texture-dark-opacity);
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Eixo óptico decorativo — círculo incompleto */
+@utility optic-ring {
+  border: 1px solid color-mix(in oklab, var(--gold) 55%, transparent);
+  border-radius: 999px;
+  border-right-color: transparent;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 550ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 550ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reveal alternativo para fotografias grandes: opacidade + leve translate/scale. */
+@utility reveal-img {
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reveal "pop" — para círculos/ícones pequenos (pontos de timeline, passos numerados). */
+@utility reveal-pop {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Linha vertical de timeline: revela-se de cima para baixo. */
+@utility reveal-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-visible="true"] {
+    transform: scaleY(1);
+  }
+}
+
+@utility arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  & svg,
+  & .arrow {
+    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  &:hover svg,
+  &:hover .arrow {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

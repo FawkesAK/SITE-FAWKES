@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "cmd.exe",
+      "runtimeArgs": [
+        "/c",
+        "C:\\Users\\55519\\Desktop\\SITE DRA DIANE\\.claude\\dev-server.cmd"
+      ],
+      "port": 8080
+    }
+  ]
+}
