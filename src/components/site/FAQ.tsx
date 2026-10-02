@@ -3,26 +3,51 @@ import { Plus } from "lucide-react";
 import { Reveal } from "./primitives";
 import { PaperGrainTexture } from "./PaperGrainTexture";
 
-/** FAQ — copy AINDA EM APROVAÇÃO pela Fawkes. */
 const faqs = [
   {
-    q: "Nunca fiz marketing. Por onde começo?",
-    a: "Pela conversa. Muitas das nossas clientes começaram do zero.",
+    q: "Quem cria os conteúdos, vocês ou eu?",
+    a: "Nós criamos tudo: roteiro, texto, design e edição. A estratégia existe justamente para unir a sua forma de comunicar ao comportamento do seu paciente, para que cada conteúdo tenha o efeito desejado. Você aprova.",
   },
   {
-    q: "Quem cria os conteúdos?",
-    a: "A gente. Roteiro, texto, design e edição, sempre alinhados com você.",
+    q: "Vai ter postagem no primeiro mês?",
+    a: "Sim. A primeira publicação acontece cerca de 20 dias após o início. Antes disso, estruturamos toda a comunicação, para que cada post já nasça dentro da estratégia.",
   },
   {
     q: "Preciso gravar vídeos?",
-    a: "Sim, no consultório, no centro cirúrgico ou em estúdio. A gente conduz a gravação.",
+    a: "Sim. O objetivo é que você tenha resultado, e isso exige que o paciente conheça você. Nós cuidamos da criação, do roteiro e da edição. A presença continua sendo sua, e é ela que gera confiança.",
+  },
+  {
+    q: "Vocês gravam em outros lugares, como estúdio?",
+    a: "Sim. Todo mês combinamos com você o local da captação, do ensaio ou do vídeo, conforme o que fizer mais sentido para o projeto.",
+  },
+  {
+    q: "Vocês fazem stories?",
+    a: "Sim. Criamos sequências estratégicas de stories conforme a necessidade do projeto, para posicionar, educar ou converter. Também orientamos o que você pode postar no dia a dia e, se quiser, montamos um calendário de stories para você seguir.",
+  },
+  {
+    q: "Vocês trabalham com outras redes além do Instagram?",
+    a: "Sim. Analisamos o perfil do paciente que você quer atrair, a faixa etária e o momento de vida dele, e a partir disso definimos onde você precisa estar: TikTok, YouTube, LinkedIn, Facebook, Pinterest ou onde fizer sentido.",
   },
   {
     q: "O tráfego pago está incluso?",
-    a: "A gestão, sim. O valor dos anúncios é pago direto à plataforma.",
+    a: "A gestão está inclusa. O valor investido nos anúncios é pago direto à plataforma, Google ou Meta (Instagram e Facebook), e definimos juntos o valor ideal para o seu objetivo.",
   },
-  { q: "Quanto tempo dura?", a: "Seis meses." },
-  { q: "Qual o investimento?", a: "A gente apresenta na conversa." },
+  {
+    q: "Por que só oftalmologia?",
+    a: "Porque é de onde viemos e o que conhecemos por dentro. Isso muda a qualidade de cada texto e de cada estratégia.",
+  },
+  {
+    q: "Quanto tempo dura o projeto?",
+    a: "Seis meses. É o tempo para construir posicionamento e ver o seu nome crescer com consistência.",
+  },
+  {
+    q: "Qual o investimento?",
+    a: "Apresentamos na conversa, depois de entender o seu momento e os seus objetivos.",
+  },
+  {
+    q: "Vocês atendem outras cidades?",
+    a: "Neste momento, atendemos médicas de Porto Alegre e região.",
+  },
 ];
 
 /** Perguntas frequentes — título centralizado em uma linha, acordeão abaixo. */
