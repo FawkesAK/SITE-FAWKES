@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { imageUrl } from "@/content/images";
 
 /* ---------------------------------- Reveal --------------------------------- */
 
@@ -198,11 +197,7 @@ export function SectionHeader({
 }) {
   return (
     <Reveal
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto max-w-3xl text-center",
-        className,
-      )}
+      className={cn("max-w-2xl", align === "center" && "mx-auto max-w-3xl text-center", className)}
     >
       {eyebrow ? (
         <p className={cn("eyebrow mb-4", invert ? "text-gold" : "text-gold")}>{eyebrow}</p>
@@ -248,8 +243,7 @@ const btnBase =
 const btnVariants = {
   primary:
     "bg-primary text-[var(--primary-foreground)] hover:bg-[var(--primary-deep)] shadow-[var(--shadow-card)]",
-  secondary:
-    "border border-primary/35 text-primary hover:border-primary hover:bg-primary/5",
+  secondary: "border border-primary/35 text-primary hover:border-primary hover:bg-primary/5",
   "ghost-light":
     "border border-[var(--primary-foreground)]/35 text-[var(--primary-foreground)] hover:bg-[var(--primary-foreground)]/10",
   "light-solid":
@@ -324,62 +318,6 @@ export function ArrowLink({
     </Link>
   );
 }
-
-/* ---------------------------------- Figure --------------------------------- */
-
-export function Figure({
-  file,
-  alt,
-  className,
-  imgClassName,
-  ratio = "4/3",
-  priority = false,
-}: {
-  file: string;
-  alt: string;
-  className?: string;
-  imgClassName?: string;
-  ratio?: string;
-  priority?: boolean;
-}) {
-  const src = imageUrl(file);
-  return (
-    <div
-      className={cn(
-        "group/fig relative overflow-hidden rounded-sm bg-secondary/40",
-        className,
-      )}
-      style={{ aspectRatio: ratio }}
-    >
-      {src ? (
-        <img
-          src={src}
-          alt={alt}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          className={cn(
-            "h-full w-full object-cover transition-transform duration-[450ms] ease-out group-hover/fig:scale-[1.02]",
-            imgClassName,
-          )}
-        />
-      ) : (
-        <div
-          role="img"
-          aria-label={alt}
-          className="flex h-full w-full flex-col items-center justify-center gap-3 border border-dashed border-secondary bg-[var(--paper)] p-6 text-center"
-        >
-          <span className="optic-ring block h-8 w-8 rotate-45" aria-hidden="true" />
-          <span className="eyebrow text-gold">Inserir</span>
-          <span className="max-w-full truncate font-mono text-[11px] text-muted-foreground">
-            {file}
-          </span>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ---------------------------------- Rule ----------------------------------- */
 
 export function HairLine({ className }: { className?: string }) {
   return <div className={cn("h-px w-full bg-border", className)} aria-hidden="true" />;

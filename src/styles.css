@@ -3,10 +3,36 @@
 @import "tw-animate-css";
 
 /*
- * Design system — Dra. Diane Marinho
- * Editorial, científico, atemporal.
- * Verde profundo, off-white, areia, dourado envelhecido pontual.
+ * Design system — Fawkes
+ * Editorial, sofisticado, minimalista.
+ * Azul-marinho profundo, azul institucional, off-white e cinzas claros
+ * (tokens --fawkes-*). Os tokens verdes/dourados abaixo são herança do
+ * template original e não são usados nas seções da Fawkes.
  */
+
+/* Fonte editorial da Fawkes (headline da Hero). Arquivos comerciais esperados
+   em /public/fonts/ — até lá, cai para a fonte instalada localmente (se houver)
+   e depois para Cormorant Garamond (ver --font-editorial). */
+@font-face {
+  font-family: "The Silver Editorial";
+  src:
+    local("The Silver Editorial"),
+    local("TheSilverEditorial-Regular"),
+    url("/fonts/TheSilverEditorial-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "The Silver Editorial";
+  src:
+    local("The Silver Editorial Italic"),
+    local("TheSilverEditorial-Italic"),
+    url("/fonts/TheSilverEditorial-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -17,6 +43,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
 
   --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-editorial: "The Silver Editorial", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
@@ -88,6 +115,25 @@
   --destructive-foreground: oklch(0.986 0.005 95);
   /* #E8E8E5 */
   --border: oklch(0.918 0.003 90);
+
+  /* Identidade Fawkes (Hero + Header sobreposto) */
+  /* #071426 — azul-marinho muito escuro, fim do gradiente da Hero */
+  --fawkes-ink: oklch(0.18 0.04 255);
+  /* #0E2340 — azul-marinho profundo */
+  --fawkes-navy: oklch(0.25 0.06 255);
+  /* #8FB3E6 — azul institucional (destaque da headline) */
+  --fawkes-blue: oklch(0.76 0.085 255);
+  /* #F4F3EF — off-white */
+  --fawkes-offwhite: oklch(0.962 0.005 95);
+  /* #C9CDD4 — cinza claro */
+  --fawkes-mist: oklch(0.84 0.01 260);
+  /* #003153 — azul da Prússia (linha de progresso das etapas) */
+  --fawkes-prussia: #003153;
+
+  /* Movimento único da página (entrada "subir com fade"): mesma duração e
+     curva em toda parte — seções (.reveal) e entrada da Hero (.fawkes-rise). */
+  --fawkes-motion-duration: 800ms;
+  --fawkes-motion-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --input: oklch(0.918 0.003 90);
   --ring: oklch(0.379 0.06 158);
 
@@ -238,15 +284,13 @@
   opacity: 0;
   transform: translateY(20px);
   transition:
-    opacity 550ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 550ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    opacity var(--fawkes-motion-duration) var(--fawkes-motion-ease),
+    transform var(--fawkes-motion-duration) var(--fawkes-motion-ease);
   &[data-visible="true"] {
     opacity: 1;
     transform: none;
   }
 }
-
-/* Reveal alternativo para fotografias grandes: opacidade + leve translate/scale. */
 @utility reveal-img {
   opacity: 0;
   transform: translateY(16px) scale(0.985);
@@ -306,5 +350,93 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Marquee infinito da seção de logos (ClientLogos.tsx). A trilha contém o
+   conjunto de logos duas vezes; -50% = exatamente uma cópia, então o
+   reinício do ciclo é imperceptível. */
+@keyframes fawkes-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.fawkes-marquee-track {
+  animation: fawkes-marquee var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fawkes-marquee-track {
+    animation: none;
+  }
+}
+
+/* Hero — entrada em sequência no carregamento (mesmo movimento do .reveal:
+   sobe 20px com fade). O atraso de cada peça vem de --rise-delay (inline).
+   `.fawkes-rise-inline` é a versão para trechos inline (linhas do título no
+   mobile), onde transform não se aplica: desloca via `top` relativo. */
+@keyframes fawkes-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fawkes-rise-inline {
+  from {
+    opacity: 0;
+    top: 20px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+.fawkes-rise {
+  animation: fawkes-rise var(--fawkes-motion-duration) var(--fawkes-motion-ease) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+.fawkes-rise-inline {
+  position: relative;
+  animation: fawkes-rise-inline var(--fawkes-motion-duration) var(--fawkes-motion-ease) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+/* Hero — foto aproxima muito devagar ao carregar (quase imperceptível),
+   com um fade curto de entrada. Termina parada no estado final. */
+@keyframes fawkes-hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+@keyframes fawkes-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fawkes-hero-zoom {
+  transform-origin: 30% 40%;
+  animation:
+    fawkes-fade-in 1200ms ease-out both,
+    fawkes-hero-zoom 14s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fawkes-rise,
+  .fawkes-rise-inline,
+  .fawkes-hero-zoom {
+    animation: none;
   }
 }

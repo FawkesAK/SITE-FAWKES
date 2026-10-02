@@ -18,7 +18,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-7xl text-primary">404</h1>
+        <h1 className="font-display text-7xl text-[var(--fawkes-navy)]">404</h1>
         <h2 className="mt-4 font-display text-2xl">Página não encontrada</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           O conteúdo que você procura não existe ou foi movido.
@@ -26,7 +26,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-[var(--primary-foreground)]"
+            className="inline-flex h-12 items-center rounded-full bg-[var(--fawkes-navy)] px-6 text-sm font-semibold text-[var(--primary-foreground)]"
           >
             Voltar ao início
           </Link>
@@ -56,13 +56,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex h-12 items-center rounded-full bg-primary px-6 text-sm font-semibold text-[var(--primary-foreground)]"
+            className="inline-flex h-12 items-center rounded-full bg-[var(--fawkes-navy)] px-6 text-sm font-semibold text-[var(--primary-foreground)]"
           >
             Tentar novamente
           </button>
           <a
             href="/"
-            className="inline-flex h-12 items-center rounded-full border border-primary/35 px-6 text-sm font-semibold text-primary"
+            className="inline-flex h-12 items-center rounded-full border border-[var(--fawkes-navy)]/35 px-6 text-sm font-semibold text-[var(--fawkes-navy)]"
           >
             Início
           </a>
@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dra. Diane Marinho | Oftalmologista em Porto Alegre" },
+      { title: "Fawkes | Assessoria de Marketing para Oftalmologistas" },
       {
         name: "description",
         content:
-          "Médica oftalmologista em Porto Alegre, professora da UFRGS, especialista em córnea e cirurgia de catarata.",
+          "Assessoria de marketing para oftalmologistas: estratégia, branding e gestão de redes sociais. Porto Alegre e todo o Brasil.",
       },
-      { name: "author", content: "Dra. Diane Marinho" },
-      { property: "og:site_name", content: "Dra. Diane Marinho" },
+      { name: "author", content: "Fawkes" },
+      { property: "og:site_name", content: "Fawkes" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -106,22 +106,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Physician",
-          name: "Dra. Diane Marinho",
-          medicalSpecialty: "Ophthalmology",
+          "@type": "ProfessionalService",
+          name: "Fawkes",
+          description: "Assessoria de Marketing para Oftalmologistas",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Porto Alegre",
             addressRegion: "RS",
             addressCountry: "BR",
           },
-          areaServed: "Porto Alegre, RS",
-          worksFor: [
-            { "@type": "CollegeOrUniversity", name: "Universidade Federal do Rio Grande do Sul" },
-            { "@type": "Hospital", name: "Hospital de Clínicas de Porto Alegre" },
-            { "@type": "Organization", name: "Banco de Olhos do HCPA" },
-            { "@type": "MedicalClinic", name: "Oftalmocentro" },
-          ],
+          areaServed: "BR",
         }),
       },
     ],
