@@ -44,7 +44,7 @@ function VideoCard({ item, onPlay }: { item: Testimonial; onPlay: () => void }) 
   return (
     <article
       data-card
-      className="group relative aspect-[9/16] w-[min(84vw,21rem)] shrink-0 snap-start overflow-hidden rounded-[1.25rem] bg-[linear-gradient(165deg,var(--fawkes-navy),var(--fawkes-ink))] shadow-[0_18px_40px_-24px_rgba(7,20,38,0.55)] sm:w-[19rem] xl:aspect-auto xl:h-full xl:w-auto xl:min-w-0 xl:flex-1 xl:shrink"
+      className="group relative aspect-[9/16] w-[min(84vw,21rem)] max-sm:w-[min(62vw,15.5rem)] shrink-0 snap-start overflow-hidden rounded-[1.25rem] bg-[linear-gradient(165deg,var(--fawkes-navy),var(--fawkes-ink))] shadow-[0_18px_40px_-24px_rgba(7,20,38,0.55)] sm:w-[19rem] xl:aspect-auto xl:h-full xl:w-auto xl:min-w-0 xl:flex-1 xl:shrink"
     >
       {item.poster ? (
         <img
@@ -75,7 +75,7 @@ function VideoCard({ item, onPlay }: { item: Testimonial; onPlay: () => void }) 
           aria-label={`Assistir depoimento da ${item.name}`}
           className="absolute inset-0 grid cursor-pointer place-items-center focus-visible:outline-none"
         >
-          <span className="grid h-16 w-16 place-items-center rounded-full border border-[var(--fawkes-offwhite)]/55 bg-[var(--fawkes-offwhite)]/15 text-[var(--fawkes-offwhite)] backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08] group-hover:border-[var(--fawkes-offwhite)] group-hover:bg-[var(--fawkes-offwhite)] group-hover:text-[var(--fawkes-navy)] group-focus-visible:ring-2 group-focus-visible:ring-[var(--fawkes-blue)] sm:h-[4.5rem] sm:w-[4.5rem]">
+          <span className="grid h-16 w-16 max-sm:h-14 max-sm:w-14 max-lg:translate-y-[4.5rem] max-sm:translate-y-14 place-items-center rounded-full border border-[var(--fawkes-offwhite)]/55 bg-[var(--fawkes-offwhite)]/15 text-[var(--fawkes-offwhite)] backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08] group-hover:border-[var(--fawkes-offwhite)] group-hover:bg-[var(--fawkes-offwhite)] group-hover:text-[var(--fawkes-navy)] group-focus-visible:ring-2 group-focus-visible:ring-[var(--fawkes-blue)] sm:h-[4.5rem] sm:w-[4.5rem]">
             <Play size={22} strokeWidth={1.6} className="translate-x-[2px] fill-current" />
           </span>
         </button>
@@ -87,8 +87,8 @@ function VideoCard({ item, onPlay }: { item: Testimonial; onPlay: () => void }) 
         </div>
       )}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 sm:p-6 xl:p-5">
-        <p className="font-editorial text-[1.5rem] leading-none text-[var(--fawkes-offwhite)] xl:text-[1.4rem]">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-5 max-sm:p-4 sm:p-6 xl:p-5">
+        <p className="font-editorial text-[1.5rem] leading-none text-[var(--fawkes-offwhite)] max-sm:text-[1.3rem] xl:text-[1.4rem]">
           {item.name}
         </p>
         <p className="mt-2 text-[0.78rem] leading-snug text-[var(--fawkes-offwhite)]/72 xl:text-[0.78rem]">
@@ -96,6 +96,26 @@ function VideoCard({ item, onPlay }: { item: Testimonial; onPlay: () => void }) 
         </p>
       </div>
     </article>
+  );
+}
+
+function ScheduleLink({ className }: { className?: string }) {
+  return (
+    <a
+      href={site.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "inline-flex h-11 items-center gap-2.5 rounded-full bg-[var(--fawkes-navy)] px-6 text-[0.88rem] font-medium text-[var(--fawkes-offwhite)] shadow-[0_8px_22px_-10px_rgba(14,35,64,0.45)] transition-all duration-300 hover:-translate-y-px hover:shadow-[0_12px_26px_-10px_rgba(14,35,64,0.55)]",
+        className,
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className="h-1.5 w-1.5 rounded-full bg-[var(--fawkes-blue)] shadow-[0_0_0_3px_color-mix(in_oklab,var(--fawkes-blue)_25%,transparent)]"
+      />
+      Agendar conversa
+    </a>
   );
 }
 
@@ -120,10 +140,10 @@ export function VideoTestimonials() {
       id="depoimentos"
       data-header-tone="light"
       aria-labelledby="depoimentos-title"
-      className="relative isolate overflow-hidden bg-[var(--fawkes-offwhite)] py-20 sm:py-24 lg:py-28 xl:flex xl:min-h-[max(80vh,640px)] xl:items-center"
+      className="relative isolate overflow-hidden bg-[var(--fawkes-offwhite)] py-20 max-sm:pb-12 sm:py-24 lg:py-28 xl:flex xl:min-h-[max(80vh,640px)] xl:items-center"
     >
       <PaperGrainTexture />
-      <div className="mx-auto grid w-full max-w-[1240px] gap-12 px-5 sm:px-8 xl:max-w-[1680px] xl:grid-cols-[auto_minmax(0,1fr)] xl:items-stretch xl:gap-12 xl:px-10">
+      <div className="mx-auto grid w-full max-w-[1240px] gap-12 max-sm:gap-10 px-5 sm:px-8 xl:max-w-[1680px] xl:grid-cols-[auto_minmax(0,1fr)] xl:items-stretch xl:gap-12 xl:px-10">
         {/* Texto */}
         <Reveal className="max-w-[30rem] xl:max-w-[29rem]">
           <span className="inline-flex items-center rounded-full border border-[var(--fawkes-blue)]/45 bg-[color-mix(in_oklab,var(--fawkes-blue)_10%,transparent)] px-3.5 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[var(--fawkes-navy)]/75">
@@ -143,18 +163,8 @@ export function VideoTestimonials() {
             Mais do que presença digital, construímos posicionamento, autoridade e uma comunicação
             que acompanha a realidade de cada médico.
           </p>
-          <a
-            href={site.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex h-11 items-center gap-2.5 rounded-full bg-[var(--fawkes-navy)] px-6 text-[0.88rem] font-medium text-[var(--fawkes-offwhite)] shadow-[0_8px_22px_-10px_rgba(14,35,64,0.45)] transition-all duration-300 hover:-translate-y-px hover:shadow-[0_12px_26px_-10px_rgba(14,35,64,0.55)]"
-          >
-            <span
-              aria-hidden="true"
-              className="h-1.5 w-1.5 rounded-full bg-[var(--fawkes-blue)] shadow-[0_0_0_3px_color-mix(in_oklab,var(--fawkes-blue)_25%,transparent)]"
-            />
-            Agendar conversa
-          </a>
+          {/* Abaixo de lg o botão vai para depois dos vídeos (ver mais abaixo) */}
+          <ScheduleLink className="mt-8 max-lg:hidden" />
           <div className="mt-8 flex items-center gap-3.5">
             <div className="flex -space-x-2.5" aria-hidden="true">
               {avatars.map((src) => (
@@ -208,6 +218,8 @@ export function VideoTestimonials() {
               <ArrowRight size={18} strokeWidth={1.6} />
             </button>
           </div>
+
+          <ScheduleLink className="sm:mt-8 lg:hidden" />
         </Reveal>
       </div>
 

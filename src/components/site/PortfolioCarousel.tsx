@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState, type PointerEvent } from "rea
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./primitives";
-import { PaperGrainTexture } from "./PaperGrainTexture";
+import { FawkesLogo } from "./FawkesLogo";
 
 type Project = {
   slug: string;
@@ -176,13 +176,17 @@ export function PortfolioCarousel() {
       data-header-tone="light"
       aria-labelledby="projetos-title"
       aria-roledescription="carrossel"
-      className="relative isolate overflow-hidden bg-[oklch(0.978_0.002_250)] py-20 text-[var(--fawkes-navy)] sm:py-24 lg:py-32"
+      className="relative isolate overflow-hidden bg-[oklch(0.978_0.002_250)] py-20 text-[var(--fawkes-navy)] sm:py-24 lg:py-12"
       onKeyDown={(e) => {
         if (e.key === "ArrowRight") go(1);
         if (e.key === "ArrowLeft") go(-1);
       }}
     >
-      <PaperGrainTexture />
+      {/* Papel creme com sombras diagonais de luz — a imagem é o próprio fundo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[#f1ebe2] bg-[url('/images/textura-papel-sombra.webp')] bg-cover bg-center"
+      />
 
       {/* Conjunto título + celular, centralizado como um grupo único */}
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 sm:px-8 lg:grid-cols-[auto_auto] lg:items-center lg:justify-center lg:gap-x-[clamp(5rem,8vw,7.5rem)] lg:gap-y-8">
@@ -218,7 +222,7 @@ export function PortfolioCarousel() {
                 setTouching(false);
               }}
             >
-              <div className="relative w-[min(86vw,22rem)] rounded-[1.75rem] bg-[#0c0e13] p-[5px] shadow-[0_30px_60px_-34px_rgba(14,35,64,0.42),0_10px_22px_-16px_rgba(14,35,64,0.3)] ring-1 ring-black/40 transition-[transform,box-shadow] duration-500 ease-[var(--fawkes-motion-ease)] group-hover:scale-[1.012] group-hover:shadow-[0_36px_70px_-30px_rgba(14,35,64,0.5),0_14px_28px_-16px_rgba(14,35,64,0.38)] motion-reduce:transition-none sm:w-[22rem] lg:w-[24rem]">
+              <div className="relative w-[min(86vw,22rem)] max-sm:w-[min(76vw,19.5rem)] rounded-[1.75rem] bg-[#0c0e13] p-[5px] shadow-[0_30px_60px_-34px_rgba(14,35,64,0.42),0_10px_22px_-16px_rgba(14,35,64,0.3)] ring-1 ring-black/40 transition-[transform,box-shadow] duration-500 ease-[var(--fawkes-motion-ease)] group-hover:scale-[1.012] group-hover:shadow-[0_36px_70px_-30px_rgba(14,35,64,0.5),0_14px_28px_-16px_rgba(14,35,64,0.38)] motion-reduce:transition-none sm:w-[22rem] lg:w-[20.5rem]">
                 {/* Tela */}
                 <div className="overflow-hidden rounded-[1.45rem] bg-[#F7F8F9]">
                   {/* Cabeçalho editorial */}
@@ -229,9 +233,7 @@ export function PortfolioCarousel() {
                       className="absolute left-1/2 top-2.5 h-[5px] w-14 -translate-x-1/2 rounded-full bg-[#1a1d24]/85 shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]"
                     />
                     <div>
-                      <p className="font-display text-[1.45rem] italic leading-none text-[#0F2B46]">
-                        Fawkes
-                      </p>
+                      <FawkesLogo className="w-[3.4rem] text-[var(--fawkes-navy)]" />
                       <p className="mt-1.5 text-[0.6rem] font-medium uppercase tracking-[0.22em] text-[#0F2B46]/55">
                         Portfólio
                       </p>

@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
 import { CTAButton } from "./primitives";
+import { FawkesLogo } from "./FawkesLogo";
 
 /** Menu da Fawkes — âncoras das futuras seções da Home. */
 const fawkesNav = [
@@ -13,31 +14,15 @@ const fawkesNav = [
   { label: "Quem somos", hash: "quem-somos" },
 ] as const;
 
-/**
- * Logo da Fawkes. Enquanto o arquivo definitivo não está em
- * /public/images/logo-fawkes.svg, usa o wordmark tipográfico (serifada itálica).
- */
-const FAWKES_LOGO_SRC: string | null = null;
-
 function Logo({ light }: { light: boolean }) {
   return (
     <Link to="/" hash="inicio" className="block" aria-label="Fawkes — início">
-      {FAWKES_LOGO_SRC ? (
-        <img
-          src={FAWKES_LOGO_SRC}
-          alt="Fawkes"
-          className={cn("h-8 w-auto sm:h-9 lg:h-10", light && "brightness-0 invert")}
-        />
-      ) : (
-        <span
-          className={cn(
-            "font-display text-[1.9rem] italic leading-none tracking-[-0.01em] transition-colors duration-300 sm:text-[2.1rem]",
-            light ? "text-[var(--fawkes-offwhite)]" : "text-[var(--fawkes-navy)]",
-          )}
-        >
-          Fawkes
-        </span>
-      )}
+      <FawkesLogo
+        className={cn(
+          "w-[5.4rem] transition-colors duration-300 sm:w-[6.2rem]",
+          light ? "text-[var(--fawkes-offwhite)]" : "text-[var(--fawkes-navy)]",
+        )}
+      />
     </Link>
   );
 }

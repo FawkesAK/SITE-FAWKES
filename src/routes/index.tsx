@@ -58,7 +58,7 @@ function Home() {
         data-header-tone="dark"
         className="relative isolate overflow-hidden bg-[var(--fawkes-ink)] text-[var(--fawkes-offwhite)]"
       >
-        <div className="relative mx-auto flex min-h-[max(640px,100svh)] w-full max-w-[1920px] flex-col justify-end lg:min-h-[max(640px,100svh)] lg:max-h-[1100px]">
+        <div className="relative mx-auto flex min-h-[max(640px,100svh)] max-sm:min-h-[max(780px,100svh)] w-full max-w-[1920px] flex-col justify-end lg:min-h-[max(640px,100svh)] lg:max-h-[1100px]">
           {/* Foto: aproxima muito devagar ao carregar (.fawkes-hero-zoom) */}
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <img
@@ -69,7 +69,7 @@ function Home() {
               fetchPriority="high"
               width={1366}
               height={769}
-              className="fawkes-hero-zoom h-full w-full object-cover object-[26%_center] sm:object-[24%_center] lg:object-[center_35%]"
+              className="fawkes-hero-zoom h-full w-full max-sm:relative max-sm:-top-[8%] max-sm:h-[108%] object-cover object-[26%_center] sm:object-[24%_center] lg:object-[center_35%]"
             />
           </div>
 
@@ -85,11 +85,11 @@ function Home() {
           />
 
           <div className="relative mx-auto w-full max-w-[1600px] px-5 pb-10 pt-40 sm:px-8 sm:pb-14 lg:px-10 lg:pb-[clamp(3.5rem,6vh,5rem)] xl:px-14">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+            <div className="flex flex-col gap-8 max-sm:gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
               {/* Entrada em sequência (.fawkes-rise, atraso via --rise-delay):
                   linha 1 → linha 2 → subtítulo → botão → bolinhas. */}
               <div className="lg:min-w-0 lg:flex-1">
-                <h1 className="font-editorial text-[clamp(2.45rem,10.4vw,3.4rem)] font-normal leading-[0.98] tracking-[-0.015em] text-[var(--fawkes-offwhite)] sm:text-[clamp(3.4rem,8.4vw,4.6rem)] lg:text-[clamp(3.5rem,5.6vw,7rem)] lg:leading-[0.94] lg:tracking-[-0.02em]">
+                <h1 className="font-editorial text-[clamp(2.45rem,10.4vw,3.4rem)] max-sm:text-[clamp(2.05rem,8.9vw,2.9rem)] font-normal leading-[0.98] tracking-[-0.015em] text-[var(--fawkes-offwhite)] sm:text-[clamp(3.4rem,8.4vw,4.6rem)] lg:text-[clamp(3.5rem,5.6vw,7rem)] lg:leading-[0.94] lg:tracking-[-0.02em]">
                   <span
                     className="fawkes-rise-inline sm:block lg:whitespace-nowrap"
                     style={{ ["--rise-delay" as string]: "150ms" }}
@@ -105,7 +105,7 @@ function Home() {
                 </h1>
 
                 <div
-                  className="fawkes-rise mt-5 flex items-center gap-3.5 sm:mt-6 lg:mt-7"
+                  className="fawkes-rise mt-5 flex items-center gap-3.5 max-sm:mt-4 sm:mt-6 lg:mt-7"
                   style={{ ["--rise-delay" as string]: "1150ms" }}
                 >
                   <div className="flex -space-x-2.5" aria-hidden="true">
@@ -128,9 +128,9 @@ function Home() {
                 </div>
               </div>
 
-              <div className="w-fit border-t border-[var(--fawkes-offwhite)]/15 pt-6 lg:mb-1 lg:shrink-0 lg:border-t-0 lg:pt-0">
+              <div className="w-fit border-t border-[var(--fawkes-offwhite)]/15 pt-6 max-sm:pt-5 lg:mb-1 lg:shrink-0 lg:border-t-0 lg:pt-0">
                 <p
-                  className="fawkes-rise text-[1.25rem] font-light leading-[1.18] tracking-[0.005em] text-[var(--fawkes-offwhite)] sm:text-[1.4rem] lg:text-[1.45rem] xl:text-[1.6rem]"
+                  className="fawkes-rise text-[1.25rem] max-sm:text-[1.12rem] font-light leading-[1.18] tracking-[0.005em] text-[var(--fawkes-offwhite)] sm:text-[1.4rem] lg:text-[1.45rem] xl:text-[1.6rem]"
                   style={{ ["--rise-delay" as string]: "700ms" }}
                 >
                   <span className="block">Seu nome lembrado</span>
@@ -140,7 +140,7 @@ function Home() {
                   <span className="block">tempo da sua rotina.</span>
                 </p>
                 <div
-                  className="fawkes-rise mt-6 inline-flex flex-col items-center gap-3.5 lg:mt-7"
+                  className="fawkes-rise mt-6 inline-flex flex-col items-center gap-3.5 max-sm:mt-5 max-sm:gap-3 lg:mt-7"
                   style={{ ["--rise-delay" as string]: "900ms" }}
                 >
                   <CTAButton

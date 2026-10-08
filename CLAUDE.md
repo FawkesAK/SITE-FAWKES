@@ -51,4 +51,5 @@ O repositório nasceu de um template de outro site (Dra. Diane Marinho); todo es
 
 - Tailwind v4: `scale-*` usa a propriedade CSS `scale` (soma-se a `style.transform`) — para animar via JS, definir o estado inicial com `transform` inline.
 - Overlays/lightboxes em portal (`@radix-ui/react-dialog` direto); o `ui/dialog.tsx` do shadcn tem overlay herdado do template.
+- Desktop (≥1024px) está aprovado: ajustes de mobile/tablet só com `max-lg:`/`max-sm:`. Tailwind v4 emite variantes arbitrárias (`max-[360px]:`) ANTES de `max-sm:`/`max-lg:` — se as duas mexem na mesma propriedade, a arbitrária perde; separe as faixas (ex.: `min-[360px]:max-sm:`).
 - IntersectionObserver não dispara quando a página "pula" por cima de um elemento (âncoras) — para visibilidade dependente de posição, calcular na rolagem (rAF).

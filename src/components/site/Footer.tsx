@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { site } from "@/content/site";
 import { MarbleTexture } from "./MarbleTexture";
+import { FawkesLogo } from "./FawkesLogo";
 
 const links = [
   { label: "Serviços", hash: "servicos" },
@@ -23,10 +24,10 @@ export function Footer() {
             <Link
               to="/"
               hash="inicio"
-              className="font-display text-[2.1rem] italic leading-none"
+              className="inline-block"
               aria-label="Fawkes — início"
             >
-              Fawkes
+              <FawkesLogo className="w-[7.5rem] text-[var(--fawkes-offwhite)]" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--fawkes-offwhite)]/65">
               {site.descricao}. Atendemos Porto Alegre e todo o Brasil.

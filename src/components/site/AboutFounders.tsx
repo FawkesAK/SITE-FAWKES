@@ -62,7 +62,7 @@ export function AboutFounders() {
       {/* Sobreposições azul-marinho (nunca preto) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--fawkes-ink)_15%,transparent)_0%,transparent_18%,color-mix(in_oklab,var(--fawkes-ink)_76%,transparent)_15rem,var(--fawkes-ink)_24rem)] sm:bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--fawkes-ink)_15%,transparent)_0%,transparent_18%,color-mix(in_oklab,var(--fawkes-ink)_76%,transparent)_20rem,var(--fawkes-ink)_31rem)] xl:hidden"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--fawkes-ink)_15%,transparent)_0%,transparent_6rem,transparent_15rem,color-mix(in_oklab,var(--fawkes-ink)_76%,transparent)_21rem,var(--fawkes-ink)_27rem)] sm:bg-[linear-gradient(to_bottom,color-mix(in_oklab,var(--fawkes-ink)_15%,transparent)_0%,transparent_18%,color-mix(in_oklab,var(--fawkes-ink)_76%,transparent)_20rem,var(--fawkes-ink)_31rem)] xl:hidden"
       />
       <div
         aria-hidden="true"
@@ -108,19 +108,19 @@ export function AboutFounders() {
         </Reveal>
 
         {/* Cards de vidro fosco sobre a foto */}
-        <ul className="mt-12 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:mt-16 lg:grid-cols-4 xl:mt-6">
+        <ul className="mt-12 grid gap-3 max-sm:mt-10 max-sm:gap-2.5 max-sm:min-[360px]:grid-cols-2 sm:grid-cols-2 sm:gap-4 lg:mt-16 lg:grid-cols-4 xl:mt-6">
           {pillars.map((p, i) => {
             const Icon = p.icon;
             return (
               <Reveal key={p.title} as="li" delay={80 + i * 80}>
-                <div className="h-full rounded-2xl border border-[var(--fawkes-offwhite)]/15 bg-[color-mix(in_oklab,var(--fawkes-ink)_38%,transparent)] p-6 shadow-[0_20px_50px_-30px_rgba(3,10,22,0.8)] backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 hover:border-[var(--fawkes-offwhite)]/28 xl:p-[clamp(1rem,2.3svh,1.5rem)]">
-                  <span className="grid h-10 w-10 place-items-center rounded-full border border-[var(--fawkes-offwhite)]/25 text-[var(--fawkes-blue)]">
+                <div className="h-full rounded-2xl max-sm:rounded-xl max-sm:p-4 border border-[var(--fawkes-offwhite)]/15 bg-[color-mix(in_oklab,var(--fawkes-ink)_38%,transparent)] p-6 shadow-[0_20px_50px_-30px_rgba(3,10,22,0.8)] backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 hover:border-[var(--fawkes-offwhite)]/28 xl:p-[clamp(1rem,2.3svh,1.5rem)]">
+                  <span className="grid h-10 w-10 max-sm:h-8 max-sm:w-8 place-items-center rounded-full border border-[var(--fawkes-offwhite)]/25 text-[var(--fawkes-blue)]">
                     <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
                   </span>
-                  <h3 className="mt-5 font-editorial text-[1.35rem] xl:mt-[clamp(0.6rem,1.6svh,1.25rem)] xl:text-[clamp(1.15rem,2.3svh,1.35rem)] font-normal leading-[1.12] text-[var(--fawkes-offwhite)]">
+                  <h3 className="mt-5 max-sm:mt-3 max-sm:text-[1.12rem] font-editorial text-[1.35rem] xl:mt-[clamp(0.6rem,1.6svh,1.25rem)] xl:text-[clamp(1.15rem,2.3svh,1.35rem)] font-normal leading-[1.12] text-[var(--fawkes-offwhite)]">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-[0.85rem] leading-[1.6] text-[var(--fawkes-offwhite)]/70">
+                  <p className="mt-2 max-sm:mt-1.5 max-sm:text-[0.78rem] max-sm:leading-[1.5] text-[0.85rem] leading-[1.6] text-[var(--fawkes-offwhite)]/70">
                     {p.text}
                   </p>
                 </div>

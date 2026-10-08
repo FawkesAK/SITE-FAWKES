@@ -49,15 +49,15 @@ export function ReputationPains() {
             próprio texto e cada linha é centralizada como um todo (o encontro
             dos cards NÃO é forçado no eixo central). Altura idêntica.
             Abaixo de xl (não cabe): 1 coluna central. */}
-        <div className="mx-auto mt-10 flex max-w-[40rem] flex-col gap-3 sm:mt-12 lg:mt-16 xl:max-w-none xl:gap-3.5">
+        <div className="mx-auto mt-10 flex max-w-[40rem] flex-col gap-3 max-lg:gap-2.5 sm:mt-12 lg:mt-16 xl:max-w-none xl:gap-3.5">
           {[0, 2, 4].map((start, row) => (
             <ul
               key={start}
-              className="flex flex-col gap-3 xl:flex-row xl:justify-center xl:gap-3.5"
+              className="flex flex-col gap-3 max-lg:gap-2.5 xl:flex-row xl:justify-center xl:gap-3.5"
             >
               {pains.slice(start, start + 2).map((pain, k) => (
                 <Reveal key={pain} as="li" delay={80 + (row * 2 + k) * 70}>
-                  <span className="flex min-h-[4.875rem] items-center gap-3.5 rounded-[10px] border border-white/[0.08] bg-[#0F2B46] px-6 py-4 text-[1rem] font-medium leading-snug text-[var(--fawkes-offwhite)]/95 shadow-[0_12px_28px_-20px_rgba(15,43,70,0.55)] transition-[transform,box-shadow] duration-300 ease-[var(--fawkes-motion-ease)] hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-[0_20px_36px_-20px_rgba(15,43,70,0.6)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 xl:h-[3.75rem] xl:min-h-0 xl:whitespace-nowrap xl:py-0 xl:text-[1.02rem]">
+                  <span className="flex min-h-[4.875rem] items-center gap-3.5 max-lg:min-h-0 max-lg:gap-3 max-lg:px-5 max-lg:py-3.5 max-lg:text-[0.94rem] rounded-[10px] border border-white/[0.08] bg-[#0F2B46] px-6 py-4 text-[1rem] font-medium leading-snug text-[var(--fawkes-offwhite)]/95 shadow-[0_12px_28px_-20px_rgba(15,43,70,0.55)] transition-[transform,box-shadow] duration-300 ease-[var(--fawkes-motion-ease)] hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-[0_20px_36px_-20px_rgba(15,43,70,0.6)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 xl:h-[3.75rem] xl:min-h-0 xl:whitespace-nowrap xl:py-0 xl:text-[1.02rem]">
                     <span
                       aria-hidden="true"
                       className="grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full border border-[var(--fawkes-mist)]/70"

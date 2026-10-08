@@ -202,16 +202,16 @@ export function ServiceFolders() {
                       aria-controls={panelId}
                       className="relative flex w-full cursor-pointer items-center justify-center gap-4 px-14 py-6 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--fawkes-blue)]/60 sm:py-7 xl:flex-col xl:items-center xl:p-8"
                     >
-                      <span className="flex items-baseline justify-center gap-4 xl:flex-col xl:items-center xl:gap-6">
+                      <span className="flex items-baseline justify-center gap-4 max-sm:gap-3 xl:flex-col xl:items-center xl:gap-6">
                         <span
                           className={cn(
-                            "font-editorial text-[2.6rem] leading-none transition-colors duration-500 sm:text-[3rem] xl:text-[4.75rem]",
+                            "font-editorial text-[2.6rem] leading-none transition-colors duration-500 max-sm:text-[2.2rem] sm:text-[3rem] xl:text-[4.75rem]",
                             on ? "text-[var(--fawkes-blue)]" : "text-[var(--fawkes-mist)]/35",
                           )}
                         >
                           {pad(i + 1)}
                         </span>
-                        <span className="font-editorial text-[1.7rem] font-normal leading-[1.05] tracking-[-0.01em] sm:text-[2rem] xl:text-[2.1rem]">
+                        <span className="font-editorial text-[1.7rem] font-normal leading-[1.05] tracking-[-0.01em] min-[360px]:max-sm:text-[1.55rem] max-[360px]:text-[1.35rem] sm:text-[2rem] xl:text-[2.1rem]">
                           {f.title}
                         </span>
                       </span>
@@ -250,15 +250,15 @@ export function ServiceFolders() {
                     )}
                   >
                     <div className="min-h-0 overflow-hidden">
-                      <div className="px-6 pb-7 text-center sm:px-7 xl:min-w-[27rem] xl:px-8 xl:pb-8">
+                      <div className="px-6 pb-7 text-center max-sm:px-4 max-sm:pb-6 sm:px-7 xl:min-w-[27rem] xl:px-8 xl:pb-8">
                         <p className="text-[0.95rem] leading-[1.65] text-[var(--fawkes-offwhite)]/78 xl:hidden">
                           {f.description}
                         </p>
-                        <ul className="mt-5 flex flex-wrap justify-center gap-2 xl:mt-0">
+                        <ul className="mt-5 flex flex-wrap justify-center gap-2 max-sm:gap-1.5 xl:mt-0">
                           {f.items.map((item) => (
                             <li
                               key={item}
-                              className="inline-flex items-center gap-2.5 rounded-full border border-[var(--fawkes-offwhite)]/14 bg-[var(--fawkes-offwhite)]/[0.035] py-2 pl-3 pr-4 text-[0.84rem] text-[var(--fawkes-offwhite)]/88"
+                              className="inline-flex items-center gap-2.5 rounded-full border border-[var(--fawkes-offwhite)]/14 bg-[var(--fawkes-offwhite)]/[0.035] py-2 pl-3 pr-4 text-[0.84rem] text-[var(--fawkes-offwhite)]/88 max-sm:gap-2 max-sm:py-1.5 max-sm:pl-2.5 max-sm:pr-3 max-sm:text-[0.76rem]"
                             >
                               <span
                                 aria-hidden="true"

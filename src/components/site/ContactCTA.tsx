@@ -93,12 +93,12 @@ function LeadForm() {
   }
 
   const inputCls =
-    "mt-1.5 h-12 w-full rounded-[11px] border border-white/65 bg-white/30 px-4 text-[0.95rem] text-[#0F2B46] placeholder:text-[#0F2B46]/40 backdrop-blur-[6px] transition-colors duration-200 hover:border-[#0F2B46]/45 focus:border-[#0F2B46]/45 focus:bg-white/40 focus:outline-none";
+    "mt-1.5 h-12 max-sm:h-11 w-full rounded-[11px] border border-white/65 bg-white/30 px-4 text-[0.95rem] text-[#0F2B46] placeholder:text-[#0F2B46]/40 backdrop-blur-[6px] transition-colors duration-200 hover:border-[#0F2B46]/45 focus:border-[#0F2B46]/45 focus:bg-white/40 focus:outline-none";
 
   return (
     <form
       onSubmit={onSubmit}
-      className="mt-7 grid gap-x-4 gap-y-4 sm:grid-cols-2"
+      className="mt-7 grid gap-x-4 gap-y-4 max-sm:mt-6 max-sm:gap-y-3 sm:grid-cols-2"
       noValidate={false}
     >
       {/* Honeypot anti-spam: invisível para pessoas; bots costumam preencher. */}
@@ -230,10 +230,10 @@ export function ContactCTA() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(247,248,249,0.55)_0%,rgba(247,248,249,0.25)_35%,rgba(247,248,249,0.1)_60%)] lg:hidden"
       />
 
-      <div className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 sm:px-8 lg:grid-cols-2 lg:gap-[clamp(5rem,7vw,7rem)]">
+      <div className="mx-auto grid w-full max-w-[1240px] items-center gap-10 px-4 max-sm:gap-8 max-sm:px-5 sm:px-8 lg:grid-cols-2 lg:gap-[clamp(5rem,7vw,7rem)]">
         {/* Formulário — placa de vidro fosco (à esquerda no desktop) */}
         <Reveal className="order-2 lg:order-1">
-          <div className="relative rounded-[26px] border border-white/55 bg-[rgba(247,248,249,0.5)] p-6 text-[#0F2B46] shadow-[0_20px_60px_rgba(15,43,70,0.10),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-[14px] backdrop-saturate-[1.1] sm:p-10 lg:p-[3.1rem] lg:backdrop-blur-[20px]">
+          <div className="relative rounded-[26px] border border-white/55 bg-[rgba(247,248,249,0.5)] p-6 max-sm:p-5 text-[#0F2B46] shadow-[0_20px_60px_rgba(15,43,70,0.10),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-[14px] backdrop-saturate-[1.1] sm:p-10 lg:p-[3.1rem] lg:backdrop-blur-[20px]">
             <h3 className="font-editorial text-[1.9rem] font-normal leading-[1.08] text-[#0F2B46] sm:text-[2.2rem]">
               Prefiro que entrem em contato
             </h3>
@@ -258,7 +258,7 @@ export function ContactCTA() {
             </span>
           </h2>
 
-          <div className="mt-10 flex flex-col items-start gap-3">
+          <div className="mt-10 flex flex-col items-start gap-3 max-sm:mt-8">
             <a
               href={site.whatsappUrl}
               target="_blank"
