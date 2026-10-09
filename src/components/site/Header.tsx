@@ -14,9 +14,9 @@ const fawkesNav = [
   { label: "Quem somos", hash: "quem-somos" },
 ] as const;
 
-function Logo({ light }: { light: boolean }) {
+function Logo({ light, className }: { light: boolean; className?: string }) {
   return (
-    <Link to="/" hash="inicio" className="block" aria-label="Fawkes — início">
+    <Link to="/" hash="inicio" className={cn("block", className)} aria-label="Fawkes — início">
       <FawkesLogo
         className={cn(
           "w-[5.4rem] transition-colors duration-300 sm:w-[6.2rem]",
@@ -134,11 +134,12 @@ export function Header() {
     >
       <div
         className={cn(
-          "mx-auto grid w-full max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 transition-all duration-300 sm:px-8 lg:flex lg:justify-between lg:px-10 xl:px-14",
+          "mx-auto grid w-full max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] max-sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 px-5 transition-all duration-300 sm:px-8 lg:flex lg:justify-between lg:px-10 xl:px-14",
           scrolled ? "h-16" : "h-[4.5rem]",
         )}
       >
-        <Logo light={overlay} />
+        {/* No celular a logo fica centralizada (coluna do meio) */}
+        <Logo light={overlay} className="max-sm:col-start-2" />
 
         <nav
           aria-label="Navegação principal"
@@ -165,7 +166,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 max-sm:col-start-3 max-sm:justify-self-end">
           <CTAButton
             href={site.whatsappUrl}
             variant="header"

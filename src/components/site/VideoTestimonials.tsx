@@ -17,8 +17,8 @@ type Testimonial = {
 
 /**
  * Depoimentos em vídeo. Dra. Natássia e Dra. Fabiana ainda não têm vídeo de
- * depoimento — ficam como placeholder ("Vídeo em breve") até o vídeo real
- * chegar: basta preencher `video` e `poster`.
+ * depoimento — ficam escondidas (ver `publishedTestimonials`) até o vídeo
+ * real chegar: basta preencher `video` e `poster`.
  */
 const testimonials: Testimonial[] = [
   {
@@ -36,6 +36,9 @@ const testimonials: Testimonial[] = [
   },
   { name: "Dra. Fabiana", specialty: "Retina e catarata" },
 ];
+
+/** Só entram na página os depoimentos que já têm vídeo. */
+const publishedTestimonials = testimonials.filter((t) => t.video);
 
 const avatars = [1, 2, 3].map((n) => `/images/fawkes-hero-avatar-${n}.jpg`);
 
@@ -99,6 +102,40 @@ function VideoCard({ item, onPlay }: { item: Testimonial; onPlay: () => void }) 
   );
 }
 
+function IntroText({ className }: { className?: string }) {
+  return (
+    <p
+      className={cn(
+        "max-w-[26rem] text-[0.98rem] xl:max-w-[24rem] leading-[1.65] text-[var(--fawkes-navy)]/70",
+        className,
+      )}
+    >
+      Mais do que presença digital, construímos posicionamento, autoridade e uma comunicação que
+      acompanha a realidade de cada médico.
+    </p>
+  );
+}
+
+function DoctorsProof({ className }: { className?: string }) {
+  return (
+    <div className={cn("flex items-center gap-3.5", className)}>
+      <div className="flex -space-x-2.5" aria-hidden="true">
+        {avatars.map((src) => (
+          <span
+            key={src}
+            className="h-9 w-9 overflow-hidden rounded-full ring-2 ring-[var(--fawkes-offwhite)]"
+          >
+            <img src={src} alt="" className="h-full w-full object-cover" />
+          </span>
+        ))}
+      </div>
+      <p className="text-[0.84rem] font-medium text-[var(--fawkes-navy)]/70">
+        Médicos que confiaram na Fawkes
+      </p>
+    </div>
+  );
+}
+
 function ScheduleLink({ className }: { className?: string }) {
   return (
     <a
@@ -143,7 +180,7 @@ export function VideoTestimonials() {
       className="relative isolate overflow-hidden bg-[var(--fawkes-offwhite)] py-20 max-sm:pb-12 sm:py-24 lg:py-28 xl:flex xl:min-h-[max(80vh,640px)] xl:items-center"
     >
       <PaperGrainTexture />
-      <div className="mx-auto grid w-full max-w-[1240px] gap-12 max-sm:gap-10 px-5 sm:px-8 xl:max-w-[1680px] xl:grid-cols-[auto_minmax(0,1fr)] xl:items-stretch xl:gap-12 xl:px-10">
+      <div className="mx-auto grid w-full max-w-[1240px] gap-12 max-lg:gap-8 px-5 sm:px-8 xl:max-w-[1680px] xl:grid-cols-[auto_minmax(0,1fr)] xl:items-stretch xl:gap-12 xl:px-10">
         {/* Texto */}
         <Reveal className="max-w-[30rem] xl:max-w-[29rem]">
           <span className="inline-flex items-center rounded-full border border-[var(--fawkes-blue)]/45 bg-[color-mix(in_oklab,var(--fawkes-blue)_10%,transparent)] px-3.5 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.12em] text-[var(--fawkes-navy)]/75">
@@ -159,27 +196,10 @@ export function VideoTestimonials() {
               do que <em className="text-[oklch(0.52_0.11_255)]">elas?</em>
             </span>
           </h2>
-          <p className="mt-5 max-w-[26rem] text-[0.98rem] xl:max-w-[24rem] leading-[1.65] text-[var(--fawkes-navy)]/70">
-            Mais do que presença digital, construímos posicionamento, autoridade e uma comunicação
-            que acompanha a realidade de cada médico.
-          </p>
-          {/* Abaixo de lg o botão vai para depois dos vídeos (ver mais abaixo) */}
+          {/* Abaixo de lg: título → vídeos → texto → botão → avatares (ver mais abaixo) */}
+          <IntroText className="mt-5 max-lg:hidden" />
           <ScheduleLink className="mt-8 max-lg:hidden" />
-          <div className="mt-8 flex items-center gap-3.5">
-            <div className="flex -space-x-2.5" aria-hidden="true">
-              {avatars.map((src) => (
-                <span
-                  key={src}
-                  className="h-9 w-9 overflow-hidden rounded-full ring-2 ring-[var(--fawkes-offwhite)]"
-                >
-                  <img src={src} alt="" className="h-full w-full object-cover" />
-                </span>
-              ))}
-            </div>
-            <p className="text-[0.84rem] font-medium text-[var(--fawkes-navy)]/70">
-              Médicos que confiaram na Fawkes
-            </p>
-          </div>
+          <DoctorsProof className="mt-8 max-lg:hidden" />
         </Reveal>
 
         {/* Vídeos */}
@@ -191,12 +211,17 @@ export function VideoTestimonials() {
             aria-label="Depoimentos em vídeo"
             className="-mx-5 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-5 pb-10 [scrollbar-width:none] active:cursor-grabbing sm:-mx-8 sm:gap-5 sm:px-8 xl:mx-0 xl:h-full xl:cursor-auto xl:justify-start xl:gap-[18px] xl:overflow-visible xl:px-0 xl:pb-0 xl:active:cursor-auto [scroll-padding-inline:1.25rem] sm:[scroll-padding-inline:2rem] [&::-webkit-scrollbar]:hidden"
           >
-            {testimonials.map((t) => (
+            {publishedTestimonials.map((t) => (
               <VideoCard key={t.name} item={t} onPlay={() => setPlaying(t)} />
             ))}
           </div>
 
-          <div className="mt-0 hidden items-center gap-3 sm:flex xl:hidden">
+          <div
+            className={cn(
+              "mt-0 hidden items-center gap-3 sm:flex xl:hidden",
+              edges.start && edges.end && "sm:hidden",
+            )}
+          >
             <button
               type="button"
               onClick={() => go(-1)}
@@ -219,7 +244,11 @@ export function VideoTestimonials() {
             </button>
           </div>
 
-          <ScheduleLink className="sm:mt-8 lg:hidden" />
+          <div className="lg:hidden">
+            <IntroText />
+            <ScheduleLink className="mt-7" />
+            <DoctorsProof className="mt-7" />
+          </div>
         </Reveal>
       </div>
 
