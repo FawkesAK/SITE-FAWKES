@@ -113,7 +113,7 @@ function HeroRegion({ className, style }: { className?: string; style?: CSSPrope
 
 function Home() {
   const heroPhoto = "/images/fawkes-hero-bastidor.jpg";
-  const heroPhotoVertical = "/images/fawkes-hero-bastidor-vertical.webp";
+  const heroPhotoVertical = "/images/fawkes-hero-vertical-2.webp";
 
   return (
     <>
@@ -139,8 +139,8 @@ function Home() {
               <source
                 media="(max-width: 1023.98px) and (orientation: portrait)"
                 srcSet={heroPhotoVertical}
-                width={941}
-                height={1672}
+                width={1125}
+                height={2000}
               />
               <img
                 src={heroPhoto}

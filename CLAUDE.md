@@ -26,7 +26,7 @@ O repositório nasceu de um template de outro site (Dra. Diane Marinho); todo es
 
 ## Estrutura da Home (ordem)
 
-1. Hero — inline em `index.tsx` (foto `fawkes-hero-bastidor.jpg` com zoom lento, entrada em sequência). Celular/tablet em pé usam `fawkes-hero-bastidor-vertical.webp` (941×1672 — baixa resolução para telas retina; pedir versão ~1800×3200). Mobile: título → subtítulo → botão → prova social → região; logo do header centralizada.
+1. Hero — inline em `index.tsx` (foto `fawkes-hero-bastidor.jpg` com zoom lento, entrada em sequência). Celular/tablet em pé usam `fawkes-hero-vertical-2.webp` (1125×2000; o ideal para telas retina seria ~1800×3200). Mobile: título → subtítulo → botão → prova social → região; logo do header centralizada.
 2. `ClientLogos` — marquee infinito CSS de logos (`public/images/clientes/`, recortes provisórios).
 3. `ReputationPains` — "Entendemos o que está travando a sua reputação" (pílulas).
 4. `ServiceFolders` — 4 pastas (Estratégia, Branding, Gestão de Redes Sociais, Tráfego Pago): accordion horizontal (xl+) / vertical (abaixo de xl). `OfferCarousel.tsx` é a versão anterior, sem uso.
