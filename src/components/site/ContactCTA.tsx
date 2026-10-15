@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "./primitives";
+import { ADS_CONVERSIONS, getAttribution, trackConversion } from "@/lib/google-ads";
 
 /**
  * Destino do formulário "Prefiro que entrem em contato" (POST JSON): a Edge
@@ -70,8 +71,10 @@ function LeadForm() {
       const res = await fetch(LEAD_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        // gclid/UTMs vão junto para o CRM saber de qual anúncio veio o lead.
+        body: JSON.stringify({ ...data, ...getAttribution() }),
       });
+      if (res.ok) trackConversion(ADS_CONVERSIONS.leadForm);
       setStatus(res.ok ? "sent" : "error");
     } catch {
       setStatus("error");
