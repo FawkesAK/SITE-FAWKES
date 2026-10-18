@@ -27,7 +27,7 @@ const pillars: { title: string; text: string; icon: LucideIcon }[] = [
 
 /** Foto dos fundadores (Amanda Teixeira e Keven Josef) no escritório. */
 const PHOTO = "/images/fawkes-fundadores.jpg";
-const PHOTO_ALT = "Amanda Teixeira e Keven Josef, fundadores da Fawkes";
+const PHOTO_ALT = "Amanda Teixeira e Keven Josef, cofundadores da Fawkes";
 
 /**
  * Seção "Quem somos" — a foto dos fundadores é o FUNDO da seção inteira.
@@ -79,18 +79,17 @@ export function AboutFounders() {
           </h2>
           <div className="mt-6 max-w-[29rem] space-y-4 text-[1rem] leading-[1.7] text-[var(--fawkes-offwhite)]/80 xl:mt-[clamp(0.9rem,2svh,1.5rem)] xl:max-w-[32rem] xl:space-y-[clamp(0.5rem,1.3svh,1rem)] xl:text-[clamp(0.88rem,1.75svh,1rem)] xl:leading-[1.6]">
             <p>
-              Fundada por Amanda Teixeira e Keven Josef, a Fawkes nasceu há 5 anos para transformar
-              a forma como oftalmologistas se posicionam no digital.
+              A Fawkes foi fundada há 5 anos por Amanda Teixeira e Keven Josef, para cuidar de um
+              único tipo de cliente: oftalmologistas.
             </p>
             <p>
-              Antes disso, a Amanda foi auxiliar de oftalmologia e viveu de perto a rotina dos
-              consultórios, os exames e a relação entre médico e paciente. Por isso, a gente fala a
-              língua da especialidade, sabe o que o CFM permite e entende o que faz uma médica ser
-              lembrada.
+              Antes disso, a Amanda trabalhou como auxiliar de oftalmologia. Ela conhece a rotina de
+              exames, a dúvida do paciente na recepção e o que a Resolução CFM 2.336/2023 permite
+              publicar.
             </p>
             <p>
-              O Keven, especialista em Branding e tráfego pago, une estratégia, dados e
-              criatividade. Juntos, os dois conduzem cada projeto do início ao fim.
+              O Keven cuida de branding e tráfego pago, sempre com os números na mão. Os dois
+              acompanham cada projeto, do primeiro roteiro ao relatório do mês.
             </p>
           </div>
           <a
