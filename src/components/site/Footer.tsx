@@ -30,7 +30,7 @@ export function Footer() {
               <FawkesLogo className="w-[7.5rem] text-[var(--fawkes-offwhite)]" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--fawkes-offwhite)]/65">
-              {site.descricao}. Atendemos Porto Alegre e todo o Brasil.
+              {site.descricao}. Atendemos todo o Rio Grande do Sul.
             </p>
           </div>
 

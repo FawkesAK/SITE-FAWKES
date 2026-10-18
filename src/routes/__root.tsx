@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Assessoria de marketing para oftalmologistas: estratégia, branding e gestão de redes sociais. Porto Alegre e todo o Brasil.",
+          "Assessoria de marketing feita só para oftalmologistas: estratégia, Instagram, branding e tráfego pago dentro das regras do CFM. Porto Alegre e todo o RS.",
       },
       { name: "author", content: "Fawkes" },
       { property: "og:site_name", content: "Fawkes" },
@@ -126,10 +126,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressRegion: "RS",
             addressCountry: "BR",
           },
-          areaServed: [
-            { "@type": "City", name: "Porto Alegre" },
-            { "@type": "AdministrativeArea", name: "Região Metropolitana de Porto Alegre" },
-          ],
+          areaServed: { "@type": "State", name: "Rio Grande do Sul" },
           founder: [
             { "@type": "Person", name: "Amanda Teixeira", jobTitle: "Cofundadora" },
             { "@type": "Person", name: "Keven Josef", jobTitle: "Cofundador" },

@@ -15,7 +15,8 @@ import { FAQ, faqs } from "@/components/site/FAQ";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 
 const TITLE = "Fawkes | Assessoria de Marketing para Oftalmologistas";
-const DESCRIPTION = "Seu nome lembrado na sua área, sem tirar tempo da sua rotina.";
+const DESCRIPTION =
+  "Assessoria de marketing feita só para oftalmologistas: estratégia, Instagram, branding e tráfego pago dentro das regras do CFM. Porto Alegre e todo o RS.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -120,7 +121,7 @@ function HeroProof({ className, delay }: { className?: string; delay: string }) 
 function HeroRegion({ className, style }: { className?: string; style?: CSSProperties }) {
   return (
     <p className={cn("text-[0.82rem] text-[var(--fawkes-offwhite)]/75", className)} style={style}>
-      Atendemos Porto Alegre e Região
+      Atendemos todo o Rio Grande do Sul
     </p>
   );
 }

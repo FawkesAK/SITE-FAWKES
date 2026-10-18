@@ -59,7 +59,7 @@ export const faqs = [
   },
   {
     q: "Vocês atendem outras cidades?",
-    a: "Neste momento, atendemos médicas de Porto Alegre e região.",
+    a: "Atendemos oftalmologistas de todo o Rio Grande do Sul, com sede em Porto Alegre.",
   },
 ];
 
