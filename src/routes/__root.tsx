@@ -114,15 +114,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": "https://www.afawkes.com.br/#organizacao",
           name: "Fawkes",
-          description: "Assessoria de Marketing para Oftalmologistas",
+          url: "https://www.afawkes.com.br/",
+          description:
+            "Assessoria de marketing para oftalmologistas: estratégia, branding, gestão de redes sociais e tráfego pago, dentro das regras do CFM.",
+          telephone: "+55-51-98617-4624",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Porto Alegre",
             addressRegion: "RS",
             addressCountry: "BR",
           },
-          areaServed: "BR",
+          areaServed: [
+            { "@type": "City", name: "Porto Alegre" },
+            { "@type": "AdministrativeArea", name: "Região Metropolitana de Porto Alegre" },
+          ],
+          founder: [
+            { "@type": "Person", name: "Amanda Teixeira", jobTitle: "Cofundadora" },
+            { "@type": "Person", name: "Keven Josef", jobTitle: "Cofundador" },
+          ],
+          knowsAbout: [
+            "Marketing médico",
+            "Marketing para oftalmologistas",
+            "Gestão de redes sociais",
+            "Branding",
+            "Tráfego pago",
+            "Google Meu Negócio",
+          ],
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "customer service",
+            telephone: "+55-51-98617-4624",
+            url: "https://wa.me/5551986174624",
+            availableLanguage: "pt-BR",
+          },
         }),
       },
     ],

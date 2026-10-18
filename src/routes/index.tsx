@@ -11,7 +11,7 @@ import { PortfolioCarousel } from "@/components/site/PortfolioCarousel";
 import { AboutFounders } from "@/components/site/AboutFounders";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { ContactCTA } from "@/components/site/ContactCTA";
-import { FAQ } from "@/components/site/FAQ";
+import { FAQ, faqs } from "@/components/site/FAQ";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 
 const TITLE = "Fawkes | Assessoria de Marketing para Oftalmologistas";
@@ -28,6 +28,20 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
     ],
     links: [{ rel: "canonical", href: "https://www.afawkes.com.br/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: Home,
 });

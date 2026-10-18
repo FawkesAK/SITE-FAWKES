@@ -3,7 +3,8 @@ import { Plus } from "lucide-react";
 import { Reveal } from "./primitives";
 import { PaperGrainTexture } from "./PaperGrainTexture";
 
-const faqs = [
+/** Também alimenta o JSON-LD FAQPage da Home (src/routes/index.tsx). */
+export const faqs = [
   {
     q: "Quem cria os conteúdos, vocês ou eu?",
     a: "Nós criamos tudo: roteiro, texto, design e edição. A estratégia existe justamente para unir a sua forma de comunicar ao comportamento do seu paciente, para que cada conteúdo tenha o efeito desejado. Você aprova.",
@@ -29,20 +30,32 @@ const faqs = [
     a: "Sim. Analisamos o perfil do paciente que você quer atrair, a faixa etária e o momento de vida dele, e a partir disso definimos onde você precisa estar: TikTok, YouTube, LinkedIn, Facebook, Pinterest ou onde fizer sentido.",
   },
   {
+    q: "O que um oftalmologista pode postar no Instagram segundo o CFM?",
+    a: "Pode educar sobre doenças e tratamentos, mostrar a rotina do consultório e falar da própria formação. Não pode prometer resultado, usar antes e depois sensacionalista nem divulgar preço como chamariz. Todo conteúdo da Fawkes é escrito dentro da Resolução CFM 2.336/2023.",
+  },
+  {
     q: "O tráfego pago está incluso?",
     a: "A gestão está inclusa. O valor investido nos anúncios é pago direto à plataforma, Google ou Meta (Instagram e Facebook), e definimos juntos o valor ideal para o seu objetivo.",
   },
   {
+    q: "Qual a diferença entre a Fawkes e uma agência comum?",
+    a: "A Fawkes atende só oftalmologia. Quem escreve sabe a diferença entre ceratocone e catarata e não precisa que você explique o seu exame.",
+  },
+  {
     q: "Por que só oftalmologia?",
-    a: "Porque é de onde viemos e o que conhecemos por dentro. Isso muda a qualidade de cada texto e de cada estratégia.",
+    a: "Porque a cofundadora veio da rotina de uma clínica oftalmológica. Isso muda cada texto: o termo técnico certo, a dúvida real do paciente e o limite ético de cada post.",
+  },
+  {
+    q: "Em quanto tempo o marketing começa a dar resultado?",
+    a: "A primeira publicação sai em cerca de 20 dias. O posicionamento é construído ao longo dos seis meses de projeto, com acompanhamento mensal.",
   },
   {
     q: "Quanto tempo dura o projeto?",
     a: "Seis meses. É o tempo para construir posicionamento e ver o seu nome crescer com consistência.",
   },
   {
-    q: "Qual o investimento?",
-    a: "Apresentamos na conversa, depois de entender o seu momento e os seus objetivos.",
+    q: "Quanto custa marketing para oftalmologista?",
+    a: "Depende de quantas frentes o projeto inclui (estratégia, redes sociais, branding, tráfego). O valor dos anúncios é pago direto ao Google ou à Meta, separado da gestão. O investimento é apresentado na conversa, depois da análise do seu perfil.",
   },
   {
     q: "Vocês atendem outras cidades?",
@@ -92,10 +105,17 @@ export function FAQ() {
                     </span>
                   </AccordionPrimitive.Trigger>
                 </AccordionPrimitive.Header>
-                <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <p className="max-w-[40rem] pb-6 pr-14 text-[0.98rem] leading-[1.65] text-[var(--fawkes-navy)]/70">
-                    {f.a}
-                  </p>
+                {/* forceMount: a resposta fica no HTML mesmo fechada (Google/IAs leem);
+                    o recolhimento é feito com grid-rows + visibility. */}
+                <AccordionPrimitive.Content
+                  forceMount
+                  className="grid transition-[grid-template-rows,visibility] duration-300 ease-out data-[state=closed]:invisible data-[state=closed]:grid-rows-[0fr] data-[state=open]:grid-rows-[1fr]"
+                >
+                  <div className="overflow-hidden">
+                    <p className="max-w-[40rem] pb-6 pr-14 text-[0.98rem] leading-[1.65] text-[var(--fawkes-navy)]/70">
+                      {f.a}
+                    </p>
+                  </div>
                 </AccordionPrimitive.Content>
               </AccordionPrimitive.Item>
             ))}
